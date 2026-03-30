@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0b1326;
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  
+  --color-primary: #89ceff;
+  --color-primary-container: #0ea5e9;
+  --color-on-primary: #00344d;
+  
+  --color-secondary: #b7c8e1;
+  --color-secondary-container: #3a4a5f;
+  
+  --color-tertiary: #ffb86e;
+  --color-tertiary-container: #de8712;
+  
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #bec8d2;
+  --color-outline: #88929b;
+  --color-outline-variant: #3e4850;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-surface-container/70 backdrop-blur-xl border border-outline-variant/10;
+  }
+  
+  .brand-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent;
+  }
+  
+  .primary-gradient-btn {
+    @apply bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold shadow-lg shadow-primary-container/20 hover:brightness-110 active:scale-[0.98] transition-all;
+  }
+}
+
+/* Custom animations for the charts and meters */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
